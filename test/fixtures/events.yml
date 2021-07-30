@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  recruting_count: 1
+  entry_count: 1
+  run_prefecture: MyString
+  run_location: MyString
+  comment: MyString
+  event_date: 2021-06-09 07:28:12
+  meeting_place: MyString
+  user_id: 1
+
+two:
+  recruting_count: 1
+  entry_count: 1
+  run_prefecture: MyString
+  run_location: MyString
+  comment: MyString
+  event_date: 2021-06-09 07:28:12
+  meeting_place: MyString
+  user_id: 1

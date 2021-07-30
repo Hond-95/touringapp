@@ -1,0 +1,2 @@
+module Touring::ParticipationHelper
+end

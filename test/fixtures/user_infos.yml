@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  age: 1
+  sex: false
+  bike: MyString
+  touring_area: MyString
+  favorite_maker: MyString
+
+two:
+  age: 1
+  sex: false
+  bike: MyString
+  touring_area: MyString
+  favorite_maker: MyString

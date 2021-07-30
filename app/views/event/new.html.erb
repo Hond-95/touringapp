@@ -1,0 +1,68 @@
+<%= stylesheet_pack_tag 'touring' %>
+<%= javascript_pack_tag "googlemap_api.js" %> 
+
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3 center form-square">
+    <h2>新規イベント作成</h2>
+    <br>
+    <%= form_with(model: @event ,url: "/event/create",local: true) do |f| %>
+      <% if @event.errors.any? %>
+        <div class="alert-danger">
+          <% @event.errors.full_messages.each do |message| %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="field">
+        <label for="title">イベント名</label>
+        <br>
+        <%= f.text_field :title ,:placeholder =>"イベント名を入力",class: 'form-control'%>
+      </div>
+      <div class="field">
+        <label for="event_date">集合日時</label>
+        <br>
+        <%= f.datetime_local_field :event_date ,class: 'form-control'%>
+      </div>
+      <div class="field">
+        <label for="comment">コメント</label>
+        <br>
+        <%= f.text_area :comment ,:placeholder =>"コメントを入力",class: 'form-control'%>
+      </div>
+      <div class="field">
+        <label for="recruting_count">募集人数</label>
+        <br>
+        <%= f.number_field :recruting_count ,class: 'form-control', min: 1 ,max: 10 %>
+      </div>
+      <div class="field">
+        <label for="run_location">コース</label>
+        <br>
+        <%= f.text_field :run_location ,:placeholder =>"走る場所を入力",class: 'form-control'%>
+      </div>
+      <div class="field">
+        <label for="meeting_place">集合場所</label>
+        <br>
+        <%= f.text_field :meeting_place ,id: "address",:placeholder =>"集合場所",class: 'form-control'%>
+      </div>
+      <div class="field">
+        <p class="announce">集合場所が正しいか確認してください</p>
+        <input type="button" class="btn btn-primary btn-sm" value="集合場所を検索" onclick="codeAddress()">
+      </div>
+      <div class="field">
+        <br>
+        <div id='map'>
+          <div>
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6QmAMgMd7MPlUEclBDzYQVIdyZxWkAwA&callback=initMap", async: true, defer: true></script>
+          </div>
+        </div>
+      </div>
+      <div class="d-grid gap-2">
+        <br>
+        <%= f.submit "作成する", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+      <br>
+      <%= link_to "ホーム画面に戻る", home_path %>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+class UserController < ApplicationController
+  def show
+    @user = User.find_by(id: params[:id])
+    @events = @user.events
+    @user.user_info = UserInfo.new if @user.user_info.blank?
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
+  end
+
+  def update
+    @user = User.find_by(id: params[:id])
+    if @user.user_info.update(update_param)
+      flash[:notice] = "プロフィールの編集を完了しました"
+      redirect_to user_path(current_user.id)
+    else
+      flash[:notice] = "プロフィールの編集に失敗しました"
+      render 'user/edit'
+    end
+  end
+
+  def following
+    @user  = User.find(params[:id])
+    @users = @user.following
+    render 'show_follow'
+  end
+
+  def followers
+    @user  = User.find(params[:id])
+    @users = @user.followers
+    render 'show_follower'
+  end
+
+  private
+  def update_param
+    params.require(:user_info).permit(:age, :sex, :bike, :favorite_maker, :touring_area)
+  end
+end

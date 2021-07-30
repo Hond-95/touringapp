@@ -1,0 +1,90 @@
+<%= stylesheet_pack_tag 'touring' %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6 mt-4">
+      <div class="container-square">
+        <h4>参加予定のツーリング</h4>
+        <div id="event_index">
+          <% @events.each do |event|%>
+            <div class="event_wrapper">
+              <div class="event_title">
+              
+                <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"},remote: true do %>
+                  <p><%= event.title%></p>
+                <%end%>
+                <%= link_to "トークルーム",event_chat_path(event.id) %>
+                <% if current_user.id == event.owner_id %>
+                  <div class="alert alert-primary col-sm-1 text-center">
+                    主催
+                  </div>
+                <% else %>
+                  <div class="alert alert-success col-sm-2 text-center">
+                    ゲスト
+                  </div>
+                <% end %>
+              </div>
+              <div class="event_detail">
+                <span class="info">日時:</span>
+                <% if !event.event_date.nil? %>
+                <span><%= event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
+                <% end %>
+              </div>
+              <div class="event_detail">
+                <span class="info">集合場所:</span>
+                <span><%= event.meeting_place %></span>
+              </div>
+              <div class="event_detail">
+                <span class="info">コース:</span>
+                <span><%= event.run_location %></span>
+              </div>
+              <div class="event_detail">
+                <span class="info">参加人数:</span>
+                <span><%= event.recruting_count %>人</span>
+              </div>
+              <div class="event_detail">
+                <span class="info">詳細:</span>
+                <span><%= event.comment %></span>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5 col-sm-offset-1 mt-4">
+      <%= link_to "ツーリングを探す", event_index_path, class: "btn btn-success btn-block mb-3" %>
+      <%= link_to "ツーリングを作成する", new_event_path, class: "btn btn-primary btn-block mb-3" %>
+      <div class="container-square">
+        <h4>作ったツーリング</h4>
+        <div id="my_touring">
+          <% @events.each do |event|%>
+            <% if current_user.id == event.owner_id %>
+              <div class="event_wrapper">
+                <div class="event_title">
+                  <p><%= event.title %></p>
+                </div>
+                <div class="event_detail">
+                  <span class="info">日時:</span>
+                  <% if !event.event_date.nil? %>
+                  <span><%= event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
+                  <% end %>
+                </div>
+                <div class="event_detail">
+                  <span class="info">集合場所:</span>
+                  <span><%= event.meeting_place %></span>
+                </div>
+                <div id="edit-event-btn">
+                  <%= link_to "編集する", edit_event_path(event.id), class: "btn btn-primary btn-sm" %>
+                </div>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>

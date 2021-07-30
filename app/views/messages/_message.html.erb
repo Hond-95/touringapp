@@ -1,0 +1,25 @@
+    <div class="row message-body">
+        <% if message.user.id == current_user.id %>
+            <div class="col-sm-12 mb-3">
+                <div class="message-sender-position">
+                    <span class="message-info">
+                        <%= message.user.name %><br>
+                        <%= message.created_at.strftime("%m/%d %H:%M") %>
+                    </span>
+                    <div class="message-sender">
+                        <p class="message-font"><%= message.message %></p>
+                    </div>
+                </div>
+            </div>
+        <% else %>
+            <div class="message-receiver mb-3">
+                <p class="message-font"><%= message.message %></p>
+            </div>
+            <span class="message-info">
+                <%= message.user.name %><br>
+                <%= message.created_at.strftime("%m/%d %H:%M") %>
+            </span>
+        <% end %>
+    </div>
+
+

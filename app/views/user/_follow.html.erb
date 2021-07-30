@@ -1,0 +1,10 @@
+<!-- 
+<%= form_for(current_user, url: relationships_path, method: :post, remote: true) do |f| %>
+  <%= hidden_field_tag :following_id, @user.id %>
+  <%= f.submit "フォローする", class: "btn btn-outline-primary" %>
+<% end %>
+-->
+<%= form_with(model: current_user.following_relationships.build) do |f| %>
+  <%= f.hidden_field :following_id, value: user.id %>
+  <%= f.submit "フォローする", class: "btn btn-outline-primary" %>
+<% end %>

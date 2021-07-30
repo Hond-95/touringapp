@@ -1,0 +1,70 @@
+<div class="container">
+  <div class="col-sm-6 col-sm-offset-3 center form-square">
+    <h2>プロフィール編集</h2>
+    <br>
+    <%= form_with(url: "/user/#{@user.id}", model: @user.user_info,local: true) do |f| %>
+      <% if @user.errors.any? %>
+        <div class="alert-danger">
+          <% @user.errors.full_messages.each do |message| %>
+          <div class="alert">
+            <%= message %>
+          </div>
+          <% end %>
+        </div>
+      <% end %>
+      <div class="field">
+        <label for="age">年齢</label>
+        <br>
+        <% unless @user.user_info == nil %>
+          <%= f.number_field :age ,:placeholder =>"年齢を入力", min: 16, max: 99,class: 'form-control',value: @user.user_info.age %>
+        <% else %>
+          <%= f.number_field :age ,:placeholder =>"年齢を入力", min: 16, max: 99,class: 'form-control' %>
+        <% end %>
+      </div>
+      <br>
+      <div class="field">
+        <label for="sex">性別</label>
+        <br>
+        <% unless @user.user_info == nil %>
+          <%= f.select :sex, [["男性", true], ["女性", false ]], {include_blank: "選択して下さい"},class: 'form-control' %>
+        <% else %>
+          <%= f.select :sex, [["男性", true], ["女性", false ]], {include_blank: "選択して下さい"},class: 'form-control' %>
+        <% end %>
+      </div>
+      <br>
+      <div class="field">
+        <label for="bike">乗ってるバイク</label>
+        <br>
+        <% unless @user.user_info == nil %>
+          <%= f.text_field :bike ,:placeholder =>"乗ってるバイクを入力",class: 'form-control',value: @user.user_info.bike %>
+        <% else %>
+          <%= f.text_field :bike ,:placeholder =>"乗ってるバイクを入力",class: 'form-control' %>
+        <% end %>
+      </div>
+      <br>
+      <div class="field">
+        <label for="favorite_maker">好きなメーカー</label>
+        <br>
+        <% unless @user.user_info == nil %>
+          <%= f.text_field :favorite_maker ,:placeholder =>"好きなメーカーを入力",class: 'form-control',value: @user.user_info.favorite_maker %>
+        <% else %>
+          <%= f.text_field :favorite_maker ,:placeholder =>"好きなメーカーを入力",class: 'form-control' %>
+        <% end %>
+      </div>
+      <br>
+      <div class="field">
+        <label for="touring_area">活動地域</label>
+        <br>
+        <% unless @user.user_info == nil %>
+          <%= f.text_field :touring_area ,:placeholder =>"活動地域を入力",class: 'form-control',value: @user.user_info.touring_area %>
+        <% else %>
+          <%= f.text_field :touring_area ,:placeholder =>"活動地域を入力",class: 'form-control' %>
+        <% end %>
+      </div>
+      <br>
+      <div class="actions">
+        <%= f.submit "更新", class: "btn btn-primary btn-block" %>
+      </div>
+    <% end %>
+  </div>
+</div>

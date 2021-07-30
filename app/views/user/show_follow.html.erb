@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="row">
+    <section class="col-sm-10 col-sm-offset-1 container-square">
+      <div class="profile-header">
+        <div class="row">
+          <div class="col-sm-2 col-xs-3">
+            <% if @user.avatar.present? %>
+              <%= image_tag @user.avatar, class: "avatar-plofile" %>
+            <% end%>
+          </div>
+          <div class="col-sm-10 col-xs-9 profile-name">
+            <h3><%= @user.name %></h3>
+          </div>
+        </div>
+      </div>
+      <div class="profile-footer">
+        <% if @user!= current_user %>
+          <div id="follow_count_<%=@user.id%>">
+        <% else %>
+          <div id="follow_count">
+        <% end %>
+            <%= render "user/stats", user: @user %>
+          </div>
+      <div>
+    </section>
+    <section class="col-sm-10 col-sm-offset-1 container-square mt-4">
+      <% if @users.present? %>
+        <ul class="users follow">
+          <% @users.each do |user| %>
+            <div class="index-wrapper row">
+              <div class="index-name line1 col-sm-9 col-xs-8">
+                <%= link_to user.name , user_path(user.id)%>
+                <span class="gray">|<%= user.user_info.bike %></span>
+              </div>
+              <div class="index-follow col-sm-3 col-xs-4">
+                <% if current_user && user != current_user %>
+                  <div id="follow_form_<%= user.id %>">
+                    <% if current_user.following?(user) %>
+                      <%= render "unfollow", user: user %>
+                    <% else %>
+                      <%= render "follow", user: user %>
+                  <% end %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </ul>
+      <% end %>
+    </section>
+  </div>
+</div>

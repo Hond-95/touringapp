@@ -1,0 +1,33 @@
+
+.home-visual {
+  background-image: image-url('top_image.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: lighten;
+  height: 720px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 5em;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+  }
+  
+  .modal-content{
+  background-color: white;
+  width: 500px;
+  margin: 40% auto;
+  }
+  

@@ -1,0 +1,89 @@
+@import '~bootstrap/scss/bootstrap';
+
+@import '@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+ * {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    }
+body {
+    background: #f3f3f3;
+    font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+}
+
+.container-square {
+    border-radius: 15px;
+    padding: 40px;
+    background: #fff;
+}
+
+.container-height {
+    height: 500px;
+    overflow-y: auto;
+}
+
+.form-square {
+    border-radius: 15px;
+    background: white;
+    padding: 45px 100px;
+}
+
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+#map {
+    height: 300px;
+    width: 100%;
+}
+
+.announce {
+    font-style: italic;
+    color: darkgray;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6{
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.5;
+}
+
+h4 {
+    font-size: 2em;
+    letter-spacing: -1px;
+    text-align: center;
+    margin: 0;
+    font-weight: normal;
+}
+
+p {
+    font-size: 1.2em;
+    line-height: 1.7;
+    text-align: center;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .col-sm-offset-3{
+        margin-left: 25%;
+    }
+    .col-sm-6{
+        width: 50%;
+    }
+}
+
+nav {
+    background-color: #f3f3f3;
+}

@@ -1,0 +1,11 @@
+<span class="info">現在の参加人数:</span>
+<span><%= @event.user_events.count %>人</span>
+<% if current_user.id == @event.owner_id %>
+  <%= link_to "編集する", edit_event_path(@event.id), class: "btn btn-primary btn-block" %>
+<% elsif current_user.participate?(@event)%>
+  <%= link_to "キャンセル", destroy_participation_path(@event), method: :delete, remote: true, class: "btn btn-secondary btn-block" %>
+<% elsif @event.recruting_count == @event.user_events.count %>
+  <a href="#" class="btn btn-secondary btn-block disabled" role="button" aria-disabled="true">募集人数に達しました</a>
+<% else %>
+  <%= link_to "参加", create_participation_path(@event), method: :post, remote: true, class: "btn btn-primary btn-block" %>
+<% end %>

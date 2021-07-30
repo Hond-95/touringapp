@@ -1,0 +1,146 @@
+<%= stylesheet_pack_tag 'user' %>
+
+<div class="container">
+  <div class="row">
+    <section class="profile col-sm-12 container-square">
+      <div class="profile-header">
+        <div id="update-day">
+          <% unless @user.user_info == nil %>
+            最終更新日<%= @user.user_info.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
+          <% end %>
+        </div>
+        <% if current_user.id == params[:id].to_i %>
+          <div class="profile-edit-link">
+            <%= link_to "プロフィール編集",edit_user_path %>
+          </div>
+        <% end %>
+        <br>
+        <div class="row">
+          <div class="col-sm-5 col-xs-1">
+            <h2><%= @user.name %></h2>
+            <% if @user.avatar.present? %>
+              <%= image_tag @user.avatar, class: "avatar-plofile" %>
+            <% end%>
+          </div>
+          <div class="col-sm-7 col-xs-10 pt-1">
+            <div class="profile-detail">
+              <span class="info">年齢：</span>
+                <% unless @user.user_info.age == nil %>
+                  <span><%= @user.user_info.age%>才</span>
+                <% else %>
+                  <span>未登録</span>
+                <% end %>
+            </div>
+            <div class="profile-detail pt-1">
+              <span class="info">性別：</span>
+                <% unless @user.user_info.sex == nil %>
+                  <% if @user.user_info.sex == true %>
+                    <span>男性</span>
+                  <% else %>
+                    <span>女性</span>
+                  <% end %>
+                <% else %>
+                  <span>未登録</span>
+                <% end %>
+            </div>
+            <div class="profile-detail pt-1">
+              <span class="info">乗ってるバイク：</span>
+                <% unless @user.user_info.bike == nil %>
+                  <span><%= @user.user_info.bike%></span>
+                <% else %>
+                  <span>未登録</span>
+                <% end %>
+            </div>
+            <div class="profile-detail pt-1">
+              <span class="info">好きなメーカー：</span>
+                <% unless @user.user_info.favorite_maker == nil %>
+                  <span><%= @user.user_info.favorite_maker%></span>
+                <% else %>
+                  <span>未登録</span>
+                <% end %>
+            </div>
+            <div class="profile-detail pt-1">
+              <span class="info">活動地域：</span>
+                <% unless @user.user_info.touring_area == nil %>
+                  <span><%= @user.user_info.touring_area%></span>
+                <% else %>
+                  <span>未登録</span>
+                <% end %>
+            </div>
+          </div>
+        </div>
+      </div> 
+      <div class="profile-footer">
+        <% if current_user && @user != current_user %>
+          <div id="follow_form">
+          <% if current_user.following?(@user) %>
+            <%= render "unfollow", user: @user %>
+          <% else %>
+            <%= render "follow", user: @user %>
+          <% end %>
+          </div>
+        <% end %>
+        <% if @user!= current_user %>
+          <div id="follow_count_<%=@user.id%>">
+        <% else %>
+          <div id="follow_count">
+        <% end %>
+            <%= render "user/stats", user: @user %>
+          </div>
+      <div>
+    </section>
+  </div>
+  <div class="row pt-2">
+    <% if @events.present? %>
+      <% @events.each do |event| %>
+        <div class="col-md-4 mt-4">
+          <div class="index-container-square">
+            <div class="event_wrapper">
+              <div class="event_title">
+                <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"}, remote: true do %>
+                  <p><%= event.title%></p>
+                <%end%>
+                <% if  current_user.id == event.owner_id %>
+                  <div class="alert alert-primary col-sm-2 text-center">
+                    主催
+                  </div>
+                <% else %>
+                  <div class="alert alert-success col-sm-2 text-center">
+                    ゲスト
+                  </div>
+                <% end %>
+              </div>
+              <div class="event_detail">
+                <span class="info">日時:</span>
+                <% if !event.event_date.nil? %>
+                <span><%= event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
+                <% end %>
+              </div>
+              <div class="event_detail">
+                <span class="info">集合場所:</span>
+                <span><%= event.meeting_place %></span>
+              </div>
+              <div class="event_detail">
+                <span class="info">コース:</span>
+                <span><%= event.run_location %></span>
+              </div>
+              <div class="event_detail">
+                <span class="info">参加人数:</span>
+                <span><%= event.recruting_count %>人</span>
+              </div>
+              <div class="event_detail">
+                <span class="info">詳細:</span>
+                <span><%= event.comment %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <%end%>
+  </div>
+
+<div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable" role="document">
+    <div class="modal-content"></div>
+  </div>
+</div>
