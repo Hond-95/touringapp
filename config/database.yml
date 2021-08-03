@@ -51,5 +51,4 @@ test:
 production:
   <<: *default
   database: touringapp_production
-  username: touringapp
-  password: <%= ENV['TOURINGAPP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
