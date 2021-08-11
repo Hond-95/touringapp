@@ -16,9 +16,13 @@ window.initMap = function(){
 
 window.codeAddress = function(){
   // 入力を取得
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 35.68123620000001, lng:139.7671248},
+    zoom: 13
+  });
+
   let inputAddress = document.getElementById('address').value;
-  let geocoder = new google.maps.Geocoder();
-  //geocoder = new google.maps.Geocoder()
+  geocoder = new google.maps.Geocoder();
   // geocodingしたあとmapを移動
   geocoder.geocode( { 'address': inputAddress}, function(results, status) {
     if (status == 'OK') {

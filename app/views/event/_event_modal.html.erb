@@ -20,9 +20,7 @@
   </div>
   <div class="event-detail">
     <div id='map'>
-      <div>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6QmAMgMd7MPlUEclBDzYQVIdyZxWkAwA&callback=initMap", async: true, defer: true></script>
-      </div>
+      <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6QmAMgMd7MPlUEclBDzYQVIdyZxWkAwA&callback=codeAddress", async: true, defer: true></script>
     </div>
   </div>
   <input type="hidden" id="address" value="<%= @event.meeting_place %>">
@@ -39,9 +37,3 @@
 <div class="modal-footer" id="participation_buttons_<%=@event.id%>">
     <%= render partial: 'participation/participate', locals: {event: @event}%>
 </div>
-
-<script>
-  $(function(){
-    codeAddress();
-  });
-</script>
