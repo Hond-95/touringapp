@@ -8,3 +8,7 @@ import '@fortawesome/fontawesome-free/js/all';
 import "../stylesheets/application";
 import "../stylesheets/touring.scss";
 import 'bootstrap';
+
+$(function(){
+  setTimeout("$('.flash').fadeOut('slow')", 2000);
+});

@@ -13,8 +13,12 @@ class Event < ApplicationRecord
   validate :day_after_today
 
   def day_after_today
-    if event_date < Date.today
-      errors.add(:event_date, 'は、明日以降の日付をしていしてください。')
+    if event_date.present?
+      if event_date < Date.today
+        errors.add(:event_date, 'は、明日以降の日付をしていしてください。')
+      end
+    else
+      errors.add(:event_date, 'を入力してください')
     end
   end
   

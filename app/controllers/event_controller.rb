@@ -42,7 +42,7 @@ class EventController < ApplicationController
       flash[:notice] = "ツーリングの登録を完了しました"
       redirect_to home_path
     else
-      flash[:notice] = "ツーリングの登録に失敗しました"
+      flash[:alert] = "ツーリングの登録に失敗しました"
       render '/event/new'
     end
   end
@@ -53,7 +53,7 @@ class EventController < ApplicationController
       flash[:notice] = "ツーリングの編集を完了しました"
       redirect_to home_path
     else
-      flash[:notice] = "ツーリングの編集に失敗しました"
+      flash[:alert] = "ツーリングの編集に失敗しました"
       render 'event/edit'
     end
   end
@@ -64,7 +64,7 @@ class EventController < ApplicationController
       flash[:notice] = "ツーリングの削除を完了しました"
       redirect_to home_path
     else
-      flash[:notice] = "ツーリングの編集に失敗しました"
+      flash[:alert] = "ツーリングの編集に失敗しました"
       render 'edit'
     end
   end
