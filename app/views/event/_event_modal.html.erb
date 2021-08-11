@@ -1,47 +1,47 @@
 <%= javascript_pack_tag "googlemap_api.js" %>
-      <div class="modal-header">
-        <h5 class="modal-title"><%= @event.title %></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div class="modal-header">
+  <h5 class="modal-title"><%= @event.title %></h5>
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="event-detail">
+    <span class="info">日時:</span>
+    <span><%= @event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
+  </div>
+  <div class="event-detail">
+    <span class="info">コース:</span>
+    <span><%= @event.run_location %></span>
+  </div>
+  <div class="event-detail">
+    <span class="info">集合場所:</span>
+    <span><%= @event.meeting_place %></span>
+  </div>
+  <div class="event-detail">
+    <div id='map'>
+      <div>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6QmAMgMd7MPlUEclBDzYQVIdyZxWkAwA&callback=initMap", async: true, defer: true></script>
       </div>
-      <div class="modal-body">
-        <div class="event-detail">
-          <span class="info">日時:</span>
-          <span><%= @event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
-        </div>
-        <div class="event-detail">
-          <span class="info">コース:</span>
-          <span><%= @event.run_location %></span>
-        </div>
-        <div class="event-detail">
-          <span class="info">集合場所:</span>
-          <span><%= @event.meeting_place %></span>
-        </div>
-        <div class="event-detail">
-          <div id='map'>
-            <div>
-              <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA6QmAMgMd7MPlUEclBDzYQVIdyZxWkAwA&callback=initMap", async: true, defer: true></script>
-            </div>
-          </div>
-        </div>
-        <input type="hidden" id="address" value="<%= @event.meeting_place %>">
-        <div class="event-detail">
-          <span class="info">詳細:</span>
-          <br>
-          <span><%= @event.comment %></span>
-        </div>
-        <div class="event-detail">
-          <span class="info">募集人数:</span>
-          <span><%= @event.recruting_count %>人</span>
-        </div>
-      </div>
-      <div class="modal-footer" id="participation_buttons_<%=@event.id%>">
-          <%= render partial: 'participation/participate', locals: {event: @event}%>
-      </div>
-<script>
+    </div>
+  </div>
+  <input type="hidden" id="address" value="<%= @event.meeting_place %>">
+  <div class="event-detail">
+    <span class="info">詳細:</span>
+    <br>
+    <span><%= @event.comment %></span>
+  </div>
+  <div class="event-detail">
+    <span class="info">募集人数:</span>
+    <span><%= @event.recruting_count %>人</span>
+  </div>
+</div>
+<div class="modal-footer" id="participation_buttons_<%=@event.id%>">
+    <%= render partial: 'participation/participate', locals: {event: @event}%>
+</div>
 
-$(function(){
-  codeAddress();
-});
+<script>
+  $(function(){
+    codeAddress();
+  });
 </script>

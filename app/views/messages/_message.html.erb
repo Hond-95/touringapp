@@ -1,3 +1,4 @@
+<% @messages.each do |message| %>
     <div class="row message-body">
         <% if message.user.id == current_user.id %>
             <div class="col-sm-12 mb-3">
@@ -21,5 +22,4 @@
             </span>
         <% end %>
     </div>
-
-
+<% end %>
