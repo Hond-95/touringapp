@@ -13,9 +13,7 @@ Rails.application.routes.draw do
 
   resources :relationships,       only: [:create, :destroy]
   get "/home" => "event#home"
-  resources :event
-  post "/event/create" => "event#create"
-  post "/event/:id/update" => "event#update"
+  resources :event, only: [:home, :new, :index , :search, :show, :edit, :chat, :create, :update, :destroy]
   get "search" => "event#search"
   get "chat/:id" => "event#chat" , as: 'event_chat'
   post 'participation/:id' => 'participation#create', as: 'create_participation'

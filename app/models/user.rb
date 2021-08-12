@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :user_events, dependent: :destroy
   has_many :events, through: :user_events, dependent: :destroy
   has_one_attached :avatar

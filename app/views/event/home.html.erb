@@ -8,13 +8,14 @@
           <% @events.each do |event|%>
             <div class="event_wrapper">
               <div class="event_title">
-              
                 <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"},remote: true do %>
-                  <p><%= event.title%></p>
-                <%end%>
-                <%= link_to "トークルーム",event_chat_path(event.id) %>
+                  <p><i class="fas fa-calendar-day"></i> <%= event.title%></p>
+                <% end %>
+                <%= link_to event_chat_path(event.id), class: "mt-1" do%>
+                  <i class="fas fa-comment-dots fa-fw fa-lg "></i> トークルーム
+                <% end %>
                 <% if current_user.id == event.owner_id %>
-                  <div class="alert alert-primary col-sm-1 text-center">
+                  <div class="alert alert-primary col-sm-1 text-center mt-1">
                     主催
                   </div>
                 <% else %>
@@ -51,8 +52,12 @@
       </div>
     </div>
     <div class="col-sm-5 col-sm-offset-1 mt-4">
-      <%= link_to "ツーリングを探す", event_index_path, class: "btn btn-success btn-block mb-3" %>
-      <%= link_to "ツーリングを作成する", new_event_path, class: "btn btn-primary btn-block mb-3" %>
+      <%= link_to event_index_path, class: "btn btn-success btn-block mb-3" do%>
+        <i class="fas fa-search"></i> ツーリングを探す
+      <%end%>
+      <%= link_to new_event_path, class: "btn btn-primary btn-block mb-3" do %>
+        <i class="far fa-calendar-plus"></i> ツーリングを作成する
+      <% end %>
       <div class="container-square">
         <h4>作ったツーリング</h4>
         <div id="my_touring">
@@ -73,7 +78,9 @@
                   <span><%= event.meeting_place %></span>
                 </div>
                 <div id="edit-event-btn">
-                  <%= link_to "編集する", edit_event_path(event.id), class: "btn btn-primary btn-sm" %>
+                  <%= link_to edit_event_path(event.id), class: "btn btn-primary btn-sm" do %>
+                    <i class="fas fa-edit"></i> 編集する
+                  <% end %>
                 </div>
               </div>
             <% end %>
