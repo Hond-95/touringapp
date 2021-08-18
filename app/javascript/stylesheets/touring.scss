@@ -1,3 +1,90 @@
+/* トップページ */
+.home-visual {
+  background-image: url("../images/top_image.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-blend-mode: lighten;
+  height: 800px;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.home-visual:before{
+  content: '';
+  background: inherit;
+  -webkit-filter: blur(5px);
+  -moz-filter: blur(5px);
+  -o-filter: blur(5px);
+  -ms-filter: blur(5px);
+  filter: blur(5px);
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  z-index: -1;
+}
+
+.home-visual h1 {
+  font-size: 5em;
+}
+
+@media (max-width: 768px) 
+{
+  .home-visual h1 {
+    font-size: 3.5em;
+  }
+
+  .home-visual h2 {
+    font-size: 1.5rem;
+  }
+}
+
+.home-visual h1,h2 {
+  position: relative;
+  font-weight: bold;
+  font-family: cursive;
+  text-align: center;
+  text-shadow:1px 0 10px white;
+}
+
+.fa-motorcycle {
+  filter:drop-shadow(1px 0 10px white);
+}
+
+.top-content h1 {
+  margin-top: 125px;
+}
+
+.navbar-brand {
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 1.8rem;
+  color: black;
+}
+
+.home-visual a:hover {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) 
+{
+  #about h3 {
+    font-size: 2.5em;
+  }
+
+  #about p {
+    font-size: 1em;
+  }
+}
+
+#about p {
+  font-weight: bolder;
+}
+
+/* ホーム画面 */
+
 .index-container-square {
   border-radius: 15px;
   padding: 5px;
@@ -18,6 +105,7 @@ h3 {
 textarea.form-control {
   height: auto;
 }
+
 @media (min-width: 768px) 
 {
   .col-sm-offset-1 {
@@ -35,6 +123,14 @@ textarea.form-control {
   font-weight: bolder;
   text-align: left;
   color: #0d6efd;
+}
+
+@media (min-width: 768px) 
+{
+  .event_title > .alert-primary,.alert-success {
+    display: table-cell;
+  }
+
 }
 
 .event_title a:hover {
@@ -71,7 +167,21 @@ textarea.form-control {
   line-height: 20px;
 }
 
+.modal-title {
+  font-weight: bolder;
+}
+
+.modal-footer .info {
+  font-weight: bolder;
+}
+
 /* チャット画面-メッセージ欄 */
+.chat-user-list h1{
+  font-size: 1.5rem;
+  text-align: center;
+  border-bottom: solid #f3f3f3 1px;
+}
+
 .chat-square {
   border-radius: 15px;
   padding: 5px;
@@ -81,6 +191,13 @@ textarea.form-control {
 #chat-scroll {
   overflow-y: auto;
   height: 500px;
+}
+
+@media (max-width: 768px) 
+{
+    #chat-scroll {
+    height: 350px;
+    }
 }
 
 .message-body {

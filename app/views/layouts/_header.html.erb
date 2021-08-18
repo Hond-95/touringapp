@@ -1,37 +1,16 @@
-<nav class="navbar navbar-expand-lg navbar-light">
-  <% if user_signed_in? %>
-    <h1><a href="/home" class="navbar-brand">Riders<i class="fas fa-motorcycle"></i></a></h1>
-  <%else%>
-    <h1><a href="/" class="navbar-brand">Riders<i class="fas fa-motorcycle"></i></a></h1>
-  <%end%>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-    <% if user_signed_in? %>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          アカウント
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <%= link_to 'マイページ', user_path(current_user.id) ,class: "dropdown-item" %>
-          <%= link_to 'アカウント編集', edit_user_registration_path ,class: "dropdown-item" %>
-        </div>
-      </li>
-      <li class="nav-item">
-        <%= link_to 'ログアウト', destroy_user_session_path, method: :delete ,class: "nav-link" %>
-      </li>
-    <% else %>
-      <li class="nav-item"><a href="#" class="nav-link">Ridersとは？</a></li>
-      <li class="nav-item">
-        <%= link_to 'ログイン', new_user_session_path,class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to '新規登録', new_user_registration_path,class: "nav-link" %>
-      </li>
-    <% end %>
-    </ul>
+<%= stylesheet_pack_tag 'touring' %>
+<% if controller.controller_name == 'home' %>
+  <div class="home-visual"> 
+    <header>
+      <%= render 'layouts/navbar' %>
+    </header>
+    <div class="top-content">
+      <h1>RidersLink<i class="fas fa-motorcycle"></i></h1>
+      <h2>一緒に走る仲間が見つかる</h2>
+    </div>
   </div>
-</nav>
+<% else %>
+  <header>
+    <%= render 'layouts/navbar' %>
+  </header>
+<% end %>

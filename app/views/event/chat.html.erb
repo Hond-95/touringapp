@@ -2,21 +2,24 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-3 container-square container-height mt-1">
-      <ul>
-      <% @users.each do |user|%>
-        <% if user.avatar.present? %>
-          <li class="user-list mt-1">
-            <%= image_tag user.avatar, class: "avatar" %>
-            <div class="user-list-name">
-              <%= link_to user.name, user_path(user.id) %>
-            </div>
-          </li>
-        <% else %>
-
-        <% end%>
-      <% end %>
-      <ul>
+    <div class="col-sm-3 container-square mt-1 chat-user-list">
+      <h1>参加者一覧</h1>
+      <div class="container-height">
+        <ul>
+        <% @users.each do |user|%>
+          <% if user.avatar.present? %>
+            <li class="user-list mt-1">
+              <%= image_tag user.avatar, class: "avatar" %>
+              <div class="user-list-name">
+                <%= link_to user.name, user_path(user.id) %>
+              </div>
+            </li>
+            <br>
+          <% else %>
+          <% end%>
+        <% end %>
+        <ul>
+      </div>
     </div>
     <div class="col-sm-8 col-sm-offset-1 chat-square mt-1">
       <div id="chat-scroll">

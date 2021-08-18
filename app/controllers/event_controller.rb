@@ -2,7 +2,7 @@ class EventController < ApplicationController
   before_action :authenticate_user!, {only: [:create,:new]}
 
   def home
-    @events = current_user.events
+    @events = current_user.events.order(event_date: "ASC")
   end
 
   def new

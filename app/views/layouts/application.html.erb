@@ -5,24 +5,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_pack_tag 'application', media: 'all' %>
-    <%= javascript_pack_tag 'application' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="flash alert alert-success">
-        <%= flash[:notice] %>
-      </div>
-    <% elsif flash[:alert] %>
-      <div class="flash alert alert-danger">
-        <%= flash[:alert] %>
-      </div>
-    <% else %>
-    <% end %>
-    <header>
+    <div class="footer-fixed">
+      <% if flash[:notice] %>
+        <div class="flash alert alert-success">
+          <%= flash[:notice] %>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="flash alert alert-danger">
+          <%= flash[:alert] %>
+        </div>
+      <% else %>
+      <% end %>
       <%= render 'layouts/header' %>
-    </header>
-    <%= yield %>
+      <%= yield %>
+      <footer>
+        <%= render 'layouts/footer' %>
+      </footer>
+    </div>
   </body>
 </html>
