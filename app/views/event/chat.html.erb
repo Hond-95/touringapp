@@ -2,8 +2,8 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-3 container-square mt-1 chat-user-list">
-      <h1>参加者一覧</h1>
+    <div class="col-sm-3 container-square chat-user-list mt-1">
+      <h1><i class="fas fa-users"></i> 参加者</h1>
       <div class="container-height">
         <ul>
         <% @users.each do |user|%>
@@ -22,6 +22,7 @@
       </div>
     </div>
     <div class="col-sm-8 col-sm-offset-1 chat-square mt-1">
+      <h1><i class="fas fa-comments"></i>「<%=@event.title%>」のトーク</h1>
       <div id="chat-scroll">
         <div id="messages" data-event_id="<%= @event.id %>">
           <% unless @messages.blank? %>

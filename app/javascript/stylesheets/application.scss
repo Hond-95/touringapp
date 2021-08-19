@@ -7,6 +7,7 @@
     padding: 0px;
     box-sizing: border-box;
     }
+
 body {
     background: #f3f3f3;
     font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
@@ -31,12 +32,8 @@ footer {
 
 .container-square {
     border-radius: 15px;
-    padding: 40px;
+    padding: 30px;
     background: #fff;
-}
-
-.container-square h4 {
-    font-weight: bolder;
 }
 
 @media (max-width: 768px) {
@@ -45,7 +42,7 @@ footer {
         padding: 20px;
     }
     .container-square {
-        padding: 20px;
+        padding: 10px;
     }
 }
 
@@ -57,7 +54,7 @@ footer {
 @media (max-width: 768px) 
 {
     .container-height {
-    height: 150px;
+    height: 100px;
     }
 }
 
@@ -130,6 +127,26 @@ p {
     line-height: 1.7;
     text-align: center;
     margin: 0;
+}
+
+/* ボタンレイアウト */
+.btn {
+    border-radius: 20px;
+}
+
+.btn-primary {
+    background-color: #337ab7;
+    border-color: #2e6da4;
+}
+
+.btn-success {
+    background-color: #00AE95;
+    border-color: #00896B;
+}
+
+.btn-danger {
+    background-color: #B22D35;
+    border-color: #C9171E;
 }
 
 @media (min-width: 768px) {

@@ -24,9 +24,9 @@ class Event < ApplicationRecord
   
   def self.search(keyword,date)
     if date.present?
-      where(["event_date > ?", "#{date.in_time_zone.beginning_of_day}"]).where(["title like? OR meeting_place like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+      where(["event_date > ?", "#{date.in_time_zone.beginning_of_day}"]).where(["title like? OR meeting_place like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"]).order(event_date: "ASC")
     else
-      where(["title like? OR meeting_place like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"])
+      where(["title like? OR meeting_place like? OR comment like?", "%#{keyword}%", "%#{keyword}%", "%#{keyword}%"]).order(event_date: "ASC")
     end
   end
 end

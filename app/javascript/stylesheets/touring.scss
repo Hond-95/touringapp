@@ -119,18 +119,10 @@ textarea.form-control {
   border-bottom: solid #f3f3f3 1px;
 }
 
-.event_title p {
+.event_title p,a {
   font-weight: bolder;
   text-align: left;
-  color: #0d6efd;
-}
-
-@media (min-width: 768px) 
-{
-  .event_title > .alert-primary,.alert-success {
-    display: table-cell;
-  }
-
+  color: #337ab7;
 }
 
 .event_title a:hover {
@@ -175,17 +167,81 @@ textarea.form-control {
   font-weight: bolder;
 }
 
+/*  検索画面 */
+.panel-body > .form-inline >.form-group > .col-sm-10 >.form-control {
+  width: 40%;
+}
+
+@media (max-width: 768px) 
+{
+  .panel-body > .form-inline >.form-group > .col-sm-10 >.form-control {
+    width: 100%;
+  }
+}
+
+.card-header {
+  padding: 5px;
+}
+
+.card-body {
+  background-color: #fff;
+  border-radius: 0.25rem;
+}
+
+#card-heading a[data-toggle="collapse"]{
+  text-decoration: none;
+  text-align: center;
+}
+
+#card-heading a[data-toggle="collapse"]:hover{
+  background: #e7e7e7;
+}
+
+#card-heading a[data-toggle="collapse"]::after{
+  content:"";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: #666 1px solid;
+  border-right: #666 1px solid;
+  position: absolute;
+  right: 15px;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+#card-heading a[aria-expanded=false]::after{
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  transition-duration: 0.3s;
+}
+#card-heading a[aria-expanded=true]::after{
+  -webkit-transform: rotate(135deg);
+  -ms-transform: rotate(135deg);
+  transform: rotate(135deg);
+  transition-duration: 0.3s;
+}
+
 /* チャット画面-メッセージ欄 */
 .chat-user-list h1{
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   text-align: center;
   border-bottom: solid #f3f3f3 1px;
+  font-weight: bolder;
 }
 
 .chat-square {
   border-radius: 15px;
   padding: 5px;
   background: #fff;
+}
+
+.chat-square h1{
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: solid #f3f3f3 1px;
+  font-weight: bolder;
 }
 
 #chat-scroll {
@@ -196,7 +252,7 @@ textarea.form-control {
 @media (max-width: 768px) 
 {
     #chat-scroll {
-    height: 350px;
+    height: 400px;
     }
 }
 
@@ -270,11 +326,31 @@ textarea.form-control {
   color: darkgray;
 }
 
+@media (max-width: 768px) 
+{
+    #update-day {
+      font-size: 13px;
+    }
+}
+
+.profile-icon {
+  display: flex;
+  align-items: center;
+}
+
+@media (max-width: 768px) 
+{
+    .profile-contents {
+      padding-left: 25px;
+    }
+}
+
 .avatar-plofile {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   margin-top: 5px;
+  margin-right: 20px;
 }
 
 .profile-detail .info {
@@ -319,6 +395,13 @@ textarea.form-control {
   text-decoration: none;
 }
 
+@media (max-width: 768px) 
+{
+    .stats a {
+      font-size: 0.8rem;
+    }
+}
+
 .stats a:hover {
   opacity: 0.5;
 }
@@ -331,6 +414,22 @@ textarea.form-control {
 .profile-name h3 {
   text-align: left;
   line-height: 80px;
+}
+
+.profile-header > .row {
+  align-items: center;
+}
+
+
+@media (max-width: 768px) 
+{
+  .profile-header > .row > .avatar-plofile {
+    width: 80px;
+    height: 80px;
+  }
+  .profile-header > .row > .profile-name h3{
+    font-size: 2em;
+  }
 }
 
 .index-wrapper {
@@ -358,4 +457,12 @@ textarea.form-control {
 
 .index-name a:hover {
   opacity: 0.5;
+}
+
+.index-wrapper > .col-xs-8 {
+  width: 60%;
+}
+
+.index-wrapper > .col-xs-4 {
+  width: 40%;
 }

@@ -1,15 +1,39 @@
 <%= stylesheet_pack_tag 'touring' %>
 
 <div class="container">
-  <%= form_with url: search_path, method: :get, local: true,class:'form-inline' do |f| %>
-    <div class="form-group mx-sm-3 mb-2">
-      <%= f.text_field :keyword ,value: @keyword ,:placeholder =>"キーワード",class: 'form-control'%>
-      <%= f.date_field :date , value: @date ,class: 'form-control'%>
-    </div>
-    <span class="input-group-btn">
-      <%= f.submit "検索" ,class: 'btn-sm btn-primary mb-2'%>
-    </span>
-  <% end %>
+  <div class="row">
+    <ul class="accordion col-sm-12" id="search-conditions">
+      <li class="card-header card" id="card-heading">
+        <a data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse1">検索条件</a>
+      </li>
+      <ul id="collapse" class="collapse show" aria-labelledby="card-heading" data-parent="#search-conditions">
+        <div class="card-body">
+          <div class="panel-body">
+            <%= form_with url: search_path, method: :get, local: true,class:'form-inline' do |f| %>
+              <div class="form-group col-sm-12">
+                <label for="keyword" class="control-label col-sm-2">キーワード</label>
+                <div class="col-sm-10">
+                  <%= f.text_field :keyword ,value: @keyword ,:placeholder =>"キーワードを入力してください",class: 'form-control'%>
+                </div>
+              </div>
+              <div class="form-group col-sm-12 pt-2">
+                <label for="date" class="control-label col-sm-2">日時</label>
+                <div class="col-sm-6">
+                  <%= f.date_field :date , value: @date ,class: 'form-control'%>
+                </div>
+              </div>
+              <div class="text-center col-sm-12 pt-2">
+                <%= f.button :type => "submit", class: 'btn btn-sm btn-primary mb-2' do%>
+                  <i class="fas fa-search"></i> 検索
+                <% end %>
+                <button type="reset" value="クリア" class="btn btn-sm btn-default">クリア</button>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </ul>
+    </ul>
+  </div>
   <div class="row">
   <% if @events.present? %>
     <% @events.each do |event| %>
@@ -17,18 +41,18 @@
         <div class="index-container-square">
           <div class="event_wrapper">
             <div class="event_title">
-              <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"}, remote: true do %>
-                <p><%= event.title%></p>
-              <%end%>
               <% if  current_user.id == event.owner_id %>
-                <div class="alert alert-primary col-sm-2 text-center">
+                <div class="alert alert-primary col-sm-12 text-center">
                   主催
                 </div>
               <% else %>
-                <div class="alert alert-success col-sm-2 text-center">
+                <div class="alert alert-success col-sm-12 text-center">
                   ゲスト
                 </div>
               <% end %>
+              <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"}, remote: true do %>
+                <p><i class="fas fa-calendar-day"></i> <%= event.title%></p>
+              <%end%>
             </div>
             <div class="event_detail">
               <span class="info">日時:</span>

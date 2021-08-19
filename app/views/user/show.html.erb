@@ -5,7 +5,7 @@
       <div class="profile-header">
         <div id="update-day">
           <% unless @user.user_info == nil %>
-            最終更新日<%= @user.user_info.updated_at.strftime("%Y年%m月%d日 %H時%M分") %>
+            <%= @user.user_info.updated_at.strftime("%Y.%m.%d %H:%M") %> 更新
           <% end %>
         </div>
         <% if current_user.id == params[:id].to_i %>
@@ -15,13 +15,13 @@
         <% end %>
         <br>
         <div class="row">
-          <div class="col-sm-5 col-xs-1">
-            <h2><%= @user.name %></h2>
+          <div class="col-sm-5 col-xs-1 profile-icon">
             <% if @user.avatar.present? %>
               <%= image_tag @user.avatar, class: "avatar-plofile" %>
             <% end%>
+            <h2><%= @user.name %></h2>
           </div>
-          <div class="col-sm-7 col-xs-10 pt-1">
+          <div class="col-sm-7 col-xs-10 pt-3 profile-contents">
             <div class="profile-detail">
               <span class="info">年齢：</span>
                 <% unless @user.user_info.age == nil %>
@@ -69,7 +69,7 @@
           </div>
         </div>
       </div> 
-      <div class="profile-footer">
+      <div class="profile-footer pt-3">
         <% if current_user && @user != current_user %>
           <div id="follow_form">
           <% if current_user.following?(@user) %>
@@ -96,18 +96,18 @@
           <div class="index-container-square">
             <div class="event_wrapper">
               <div class="event_title">
-                <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"}, remote: true do %>
-                  <p><%= event.title%></p>
-                <%end%>
                 <% if  current_user.id == event.owner_id %>
-                  <div class="alert alert-primary col-sm-2 text-center">
+                  <div class="alert alert-primary col-sm-12 text-center">
                     主催
                   </div>
                 <% else %>
-                  <div class="alert alert-success col-sm-2 text-center">
+                  <div class="alert alert-success col-sm-12 text-center">
                     ゲスト
                   </div>
                 <% end %>
+                <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"}, remote: true do %>
+                  <p><i class="fas fa-calendar-day"></i> <%= event.title%></p>
+                <%end%>
               </div>
               <div class="event_detail">
                 <span class="info">日時:</span>

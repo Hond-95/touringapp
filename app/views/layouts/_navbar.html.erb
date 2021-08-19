@@ -17,6 +17,7 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           <%= link_to 'マイページ', user_path(current_user.id) ,class: "dropdown-item" %>
           <%= link_to 'アカウント編集', edit_user_registration_path ,class: "dropdown-item" %>
+          <%= link_to 'プロフィール編集', edit_user_path(current_user.id) ,class: "dropdown-item" %>
         </div>
       </li>
       <li class="nav-item">

@@ -1,14 +1,12 @@
 <div class="container">
   <div class="row">
     <section class="col-sm-10 col-sm-offset-1 container-square">
-      <div class="profile-header">
+      <div class="profile-header pl-3">
         <div class="row">
-          <div class="col-sm-2 col-xs-3">
-            <% if @user.avatar.present? %>
-              <%= image_tag @user.avatar, class: "avatar-plofile" %>
-            <% end%>
-          </div>
-          <div class="col-sm-10 col-xs-9 profile-name">
+          <% if @user.avatar.present? %>
+            <%= image_tag @user.avatar, class: "avatar-plofile" %>
+          <% end%>
+          <div class="profile-name">
             <h3><%= @user.name %></h3>
           </div>
         </div>
@@ -25,6 +23,7 @@
     </section>
     <section class="col-sm-10 col-sm-offset-1 container-square mt-4">
       <% if @users.present? %>
+        <h4>フォロー中</h4>
         <ul class="users follow">
           <% @users.each do |user| %>
             <div class="index-wrapper row">
