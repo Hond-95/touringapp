@@ -1,5 +1,6 @@
 class ParticipationController < ApplicationController
-  before_action :set_event
+  before_action :set_event,:authenticate_user!
+
 
   def create
     @user_event = UserEvent.new(user_id: current_user.id,  event_id: params[:id])

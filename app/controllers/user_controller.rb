@@ -1,12 +1,18 @@
 class UserController < ApplicationController
+  before_action :authenticate_user!
+
   def show
     @user = User.find_by(id: params[:id])
-    @events = @user.events
+    @events = @user.events.page(params[:page]).per(6)
     @user.user_info = UserInfo.new if @user.user_info.blank?
   end
 
   def edit
     @user = User.find_by(id: params[:id])
+    unless @user.id == current_user.id
+      flash[:alert] = "自分以外のプロフィールは編集できません"
+      redirect_to user_path(current_user.id)
+    end
   end
 
   def update

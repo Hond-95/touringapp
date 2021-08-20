@@ -1,0 +1,14 @@
+ja:
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        title: イベント名
+        recruting_count: 募集人数
+        event_date: 集合日時
+        comment: コメント
+        run_location: コース
+        meeting_place: 集合場所
+      user:
+        name: ニックネーム

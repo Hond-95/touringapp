@@ -35,52 +35,57 @@
     </ul>
   </div>
   <div class="row">
-  <% if @events.present? %>
-    <% @events.each do |event| %>
-      <div class="col-md-4 mt-4">
-        <div class="index-container-square">
-          <div class="event_wrapper">
-            <div class="event_title">
-              <% if  current_user.id == event.owner_id %>
-                <div class="alert alert-primary col-sm-12 text-center">
-                  主催
-                </div>
-              <% else %>
-                <div class="alert alert-success col-sm-12 text-center">
-                  ゲスト
-                </div>
-              <% end %>
-              <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"}, remote: true do %>
-                <p><i class="fas fa-calendar-day"></i> <%= event.title%></p>
-              <%end%>
-            </div>
-            <div class="event_detail">
-              <span class="info">日時:</span>
-              <% if !event.event_date.nil? %>
-              <span><%= event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
-              <% end %>
-            </div>
-            <div class="event_detail">
-              <span class="info">集合場所:</span>
-              <span><%= event.meeting_place %></span>
-            </div>
-            <div class="event_detail">
-              <span class="info">コース:</span>
-              <span><%= event.run_location %></span>
-            </div>
-            <div class="event_detail">
-              <span class="info">参加人数:</span>
-              <span><%= event.recruting_count %>人</span>
-            </div>
-            <div class="event_detail">
-              <span class="info">詳細:</span>
-              <span><%= event.comment %></span>
+    <% if @events.present? %>
+      <% @events.each do |event| %>
+        <div class="col-md-4 mt-4">
+          <div class="index-container-square">
+            <div class="event_wrapper">
+              <div class="event_title">
+                <% if  current_user.id == event.owner_id %>
+                  <div class="alert alert-primary col-sm-12 text-center">
+                    主催
+                  </div>
+                <% else %>
+                  <div class="alert alert-success col-sm-12 text-center">
+                    ゲスト
+                  </div>
+                <% end %>
+                <%= link_to event_path(event.id), data: {toggle: "modal", target: "#event-modal"}, remote: true do %>
+                  <p><i class="fas fa-calendar-day"></i> <%= event.title%></p>
+                <%end%>
+              </div>
+              <div class="event_detail">
+                <span class="info">日時:</span>
+                <% if !event.event_date.nil? %>
+                <span><%= event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
+                <% end %>
+              </div>
+              <div class="event_detail">
+                <span class="info">集合場所:</span>
+                <span><%= event.meeting_place %></span>
+              </div>
+              <div class="event_detail">
+                <span class="info">コース:</span>
+                <span><%= event.run_location %></span>
+              </div>
+              <div class="event_detail">
+                <span class="info">参加人数:</span>
+                <span><%= event.recruting_count %>人</span>
+              </div>
+              <div class="event_detail">
+                <span class="info">詳細:</span>
+                <span><%= event.comment %></span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
+    <%end%>
+  </div>
+  <div class="pagination-footer pt-3">
+    <% if @events.present? %>
+      <%= paginate @events %>
     <% end %>
-  <%end%>
   </div>
 </div>
 <div class="modal fade" id="event-modal" tabindex="-1" role="dialog" aria-hidden="true">

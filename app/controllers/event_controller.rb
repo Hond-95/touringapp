@@ -1,8 +1,9 @@
 class EventController < ApplicationController
-  before_action :authenticate_user!, {only: [:create,:new]}
+  before_action :authenticate_user!
 
   def home
     @events = current_user.events.order(event_date: "ASC")
+    @owner_events = Event.find_by(owner_id: current_user.id)
   end
 
   def new
@@ -11,11 +12,10 @@ class EventController < ApplicationController
   end
 
   def index
-
   end
   
   def search
-    @events = Event.search(params[:keyword],params[:date])
+    @events = Event.search(params[:keyword],params[:date]).page(params[:page]).per(6)
     @keyword = params[:keyword]
     @date = params[:date]
     render '/event/index'
@@ -27,12 +27,21 @@ class EventController < ApplicationController
 
   def edit
     @event = Event.find_by(id: params[:id])
+    unless @event.owner_id == current_user.id
+      flash[:alert] = "作成者以外は編集できません"
+      redirect_to home_path
+    end
   end
 
   def chat
     @event = Event.find_by(id: params[:id])
-    @messages = @event.messages
-    @users = @event.users
+    if current_user.participate?(@event)
+      @messages = @event.messages
+      @users = @event.users
+    else
+      flash[:alert] = "参加者以外はトークルームに入れません"
+      redirect_to home_path
+    end
   end
 
   def create

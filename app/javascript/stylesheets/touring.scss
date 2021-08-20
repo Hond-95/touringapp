@@ -167,6 +167,33 @@ textarea.form-control {
   font-weight: bolder;
 }
 
+#my_touring {
+  overflow-y: auto;
+  height: 450px;
+}
+
+#event_index{
+  overflow-y: auto;
+  height: 560px;
+}
+
+@media (max-width: 768px) 
+{
+  #my_touring {
+    overflow-y: auto;
+    height: 350px;
+  }
+  
+  #event_index{
+    overflow-y: auto;
+    height: 400px;
+  }
+}
+
+.container-square h4 {
+  border-bottom: solid #f3f3f3 1px;
+}
+
 /*  検索画面 */
 .panel-body > .form-inline >.form-group > .col-sm-10 >.form-control {
   width: 40%;
@@ -352,6 +379,17 @@ textarea.form-control {
   margin-top: 5px;
   margin-right: 20px;
 }
+
+.default-icon{
+  font-size: 75px;
+  text-align: center;
+  color: darkgray;
+  display: inline-table;
+}
+
+.profile-icon h2 {
+  font-family: auto;
+} 
 
 .profile-detail .info {
   font-weight: bold;

@@ -40,6 +40,8 @@ gem 'zeitwerk', '~> 2.4.2'
 gem 'webpacker', '~> 4.x'
 gem 'rack-proxy', '~> 0.7.0'
 gem "aws-sdk-s3", require: false
+gem 'kaminari'
+gem 'rails-i18n'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
