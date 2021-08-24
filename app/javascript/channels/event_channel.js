@@ -32,6 +32,7 @@ $(function() {
     speak: function(message) {
       return this.perform('speak', {message: message});
     }
+    
   });
 
   //画面スクロール

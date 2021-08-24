@@ -9,19 +9,19 @@ class UserController < ApplicationController
 
   def edit
     @user = User.find_by(id: params[:id])
-    unless @user.id == current_user.id
-      flash[:alert] = "自分以外のプロフィールは編集できません"
-      redirect_to user_path(current_user.id)
-    end
+    return if @user.id == current_user.id
+
+    flash[:alert] = '自分以外のプロフィールは編集できません'
+    redirect_to user_path(current_user.id)
   end
 
   def update
     @user = User.find_by(id: params[:id])
     if @user.user_info.update(update_param)
-      flash[:notice] = "プロフィールの編集を完了しました"
+      flash[:notice] = 'プロフィールの編集を完了しました'
       redirect_to user_path(current_user.id)
     else
-      flash[:alert] = "プロフィールの編集に失敗しました"
+      flash[:alert] = 'プロフィールの編集に失敗しました'
       render 'user/edit'
     end
   end
@@ -39,6 +39,7 @@ class UserController < ApplicationController
   end
 
   private
+
   def update_param
     params.require(:user_info).permit(:age, :sex, :bike, :favorite_maker, :touring_area)
   end

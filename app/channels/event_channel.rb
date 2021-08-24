@@ -8,6 +8,6 @@ class EventChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create!(message: data['message'],event_id: params['event'], user_id: current_user.id)
+    Message.create!(message: data['message'], event_id: params['event'], user_id: current_user.id)
   end
 end

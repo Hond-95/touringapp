@@ -26,7 +26,7 @@
       <div id="chat-scroll">
         <div id="messages" data-event_id="<%= @event.id %>">
           <% unless @messages.blank? %>
-            <%=render @messages %>
+            <%=render  partial: "messages/message", collection: @messages %>
           <% end %>
         </div>
       </div>
