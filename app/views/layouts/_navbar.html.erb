@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg navbar-light">
   <% if user_signed_in? %>
-    <h1><a href="/home" class="navbar-brand">RidersLink<i class="fas fa-motorcycle"></i></a></h1>
+    <h1><a href="/home" class="navbar-brand" id="brand-logo-header" >RidersLink<i class="fas fa-motorcycle"></i></a></h1>
   <%else%>
-    <h1><a href="/" class="navbar-brand">RidersLink<i class="fas fa-motorcycle"></i></a></h1>
+    <h1><a href="/" class="navbar-brand" id="brand-logo-header" >RidersLink<i class="fas fa-motorcycle"></i></a></h1>
   <%end%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>

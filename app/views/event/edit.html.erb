@@ -23,7 +23,11 @@
       <div class="field">
         <label for="event_date">集合日時</label>
         <br>
-        <%= f.datetime_local_field :event_date ,class: 'form-control', value: @event.event_date.strftime("%Y-%m-%dT%R") %>
+        <% if @event.event_date.present? %>
+          <%= f.datetime_local_field :event_date ,class: 'form-control', value: @event.event_date.strftime("%Y-%m-%dT%R") %>
+        <% else %>
+          <%= f.datetime_local_field :event_date ,class: 'form-control' %>
+        <%end%>
       </div>
       <div class="field">
         <label for="comment">コメント</label>

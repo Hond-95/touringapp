@@ -9,6 +9,7 @@ class Event < ApplicationRecord
   validates :comment, { presence: true, length: { maximum: 100 } }
   validates :run_location, { presence: true, length: { maximum: 20 } }
   validates :meeting_place, { presence: true, length: { maximum: 20 } }
+  validates :owner_id, { presence: true }
 
   validate :day_after_today
 

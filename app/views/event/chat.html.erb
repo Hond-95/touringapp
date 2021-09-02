@@ -16,6 +16,15 @@
             </li>
             <br>
           <% else %>
+            <li class="user-list mt-1">
+              <div class="chat-default-icon pr-1">
+                <i class="far fa-user-circle"></i>
+              </div>
+              <div class="user-list-name">
+                <%= link_to user.name, user_path(user.id) %>
+              </div>
+            </li>
+            <br>
           <% end%>
         <% end %>
         <ul>

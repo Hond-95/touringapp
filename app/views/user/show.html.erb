@@ -29,45 +29,45 @@
             <div class="profile-detail">
               <span class="info">年齢：</span>
                 <% unless @user.user_info.age.blank? %>
-                  <span><%= @user.user_info.age%>才</span>
+                  <span class="user_age" ><%= @user.user_info.age%>才</span>
                 <% else %>
-                  <span>未登録</span>
+                  <span class="user_age" >未登録</span>
                 <% end %>
             </div>
             <div class="profile-detail pt-1">
               <span class="info">性別：</span>
                 <% unless @user.user_info.sex.blank? %>
                   <% if @user.user_info.sex == true %>
-                    <span>男性</span>
+                    <span class="user_sex" >男性</span>
                   <% else %>
-                    <span>女性</span>
+                    <span class="user_sex"> 女性</span>
                   <% end %>
                 <% else %>
-                  <span>未登録</span>
+                  <span class="user_sex" >未登録</span>
                 <% end %>
             </div>
             <div class="profile-detail pt-1">
               <span class="info">乗ってるバイク：</span>
                 <% unless @user.user_info.bike.blank? %>
-                  <span><%= @user.user_info.bike%></span>
+                  <span class="user_bike" ><%= @user.user_info.bike%></span>
                 <% else %>
-                  <span>未登録</span>
+                  <span class="user_bike" >未登録</span>
                 <% end %>
             </div>
             <div class="profile-detail pt-1">
               <span class="info">好きなメーカー：</span>
                 <% unless @user.user_info.favorite_maker.blank? %>
-                  <span><%= @user.user_info.favorite_maker%></span>
+                  <span class="user_favorite_maker" ><%= @user.user_info.favorite_maker%></span>
                 <% else %>
-                  <span>未登録</span>
+                  <span class="user_favorite_maker" >未登録</span>
                 <% end %>
             </div>
             <div class="profile-detail pt-1">
               <span class="info">活動地域：</span>
                 <% unless @user.user_info.touring_area.blank? %>
-                  <span><%= @user.user_info.touring_area%></span>
+                  <span class="user_touring_area" ><%= @user.user_info.touring_area%></span>
                 <% else %>
-                  <span>未登録</span>
+                  <span class="user_touring_area" >未登録</span>
                 <% end %>
             </div>
           </div>

@@ -4,10 +4,6 @@ let marker
 let infoWindow
 
 window.initMap = function(){
-  // geocoderを初期化
-  //let geocoder = new google.maps.Geocoder();
-  //geocoder = new google.maps.Geocoder()
-
   map = new google.maps.Map(document.getElementById('map'), {
   center: {lat: 35.68123620000001, lng:139.7671248},
   zoom: 13
@@ -22,39 +18,44 @@ window.codeAddress = function(){
   });
 
   let inputAddress = document.getElementById('address').value;
+
   geocoder = new google.maps.Geocoder();
-  // geocodingしたあとmapを移動
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-    if (status == 'OK') {
-      // 既にあるマーカーを削除
-        deleteMakers();
 
-      // map.setCenterで地図が移動
-      map.setCenter(results[0].geometry.location);
-      
-      // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
-      marker = new google.maps.Marker({
-          map: map,
-          position: results[0].geometry.location
-      });
+  // 入力フォームに入力がある場合のみ
+  if (inputAddress !== null && inputAddress !== '') {
+    // geocodingしたあとmapを移動
+    geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+      if (status == 'OK') {
+        // 既にあるマーカーを削除
+          deleteMakers();
 
-      var position = results[0].geometry.location;
-      var address = results[0].formatted_address;
-      // マーカーへの吹き出しの追加
-      setInfoW(inputAddress, position, address);
-      // マーカーにクリックイベントを追加
-      markerEvent();
+        // map.setCenterで地図が移動
+        map.setCenter(results[0].geometry.location);
 
-      infoWindow.open(map, marker);
+        // google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
+        marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
 
-    } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
-      alert("見つかりません");
+        var position = results[0].geometry.location;
+        var address = results[0].formatted_address;
+        // マーカーへの吹き出しの追加
+        setInfoW(inputAddress, position, address);
+        // マーカーにクリックイベントを追加
+        markerEvent();
 
-    } else {
-      console.log(status);
-      alert("エラー発生");
-    }
-  });
+        infoWindow.open(map, marker);
+
+      } else if (status == google.maps.GeocoderStatus.ZERO_RESULTS) {
+        alert("見つかりません");
+
+      } else {
+        console.log(status);
+        alert("エラー発生");
+      }
+    });
+  }
 }
 
 //マーカーを削除する
