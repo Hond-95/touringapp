@@ -1,5 +1,7 @@
-<span class="info">現在の参加人数:</span>
-<span><%= @event.user_events.count %>人</span>
+<div class="modal_participation_count">
+  <span class="info">現在の参加人数:</span>
+  <span><%= @event.user_events.count %>人</span>
+</div>
 <% if current_user.id == @event.owner_id %>
   <%= link_to "編集する", edit_event_path(@event.id), class: "btn btn-primary btn-block" %>
 <% elsif current_user.participate?(@event)%>

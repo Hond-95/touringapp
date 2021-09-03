@@ -6,15 +6,15 @@
   </button>
 </div>
 <div class="modal-body">
-  <div class="event-detail">
+  <div class="event-detail modal_event_date">
     <span class="info">日時:</span>
     <span><%= @event.event_date.strftime("%Y年%m月%d日 %H時%M分") %></span>
   </div>
-  <div class="event-detail">
+  <div class="event-detail modal_run_location">
     <span class="info">コース:</span>
     <span><%= @event.run_location %></span>
   </div>
-  <div class="event-detail">
+  <div class="event-detail modal_meeting_place">
     <span class="info">集合場所:</span>
     <span><%= @event.meeting_place %></span>
   </div>
@@ -24,12 +24,11 @@
     </div>
   </div>
   <input type="hidden" id="address" value="<%= @event.meeting_place %>">
-  <div class="event-detail">
+  <div class="event-detail modal_comment">
     <span class="info">詳細:</span>
-    <br>
     <span><%= @event.comment %></span>
   </div>
-  <div class="event-detail">
+  <div class="event-detail modal_recruting_count">
     <span class="info">募集人数:</span>
     <span><%= @event.recruting_count %>人</span>
   </div>

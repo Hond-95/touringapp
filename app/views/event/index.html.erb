@@ -38,7 +38,7 @@
     <% if @events.present? %>
       <% @events.each do |event| %>
         <div class="col-md-4 mt-4">
-          <div class="index-container-square">
+          <div class="index-container-square event_<%=event.id%> ">
             <div class="event_wrapper">
               <div class="event_title">
                 <% if  current_user.id == event.owner_id %>
