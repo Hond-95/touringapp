@@ -2,8 +2,8 @@ class EventController < ApplicationController
   before_action :authenticate_user!
 
   def home
-    @events = current_user.events.order(event_date: 'ASC')
-    @owner_events = Event.find_by(owner_id: current_user.id)
+    @events = current_user.events.where("event_date > ?", Date.today ).order(event_date: 'ASC')
+    @owner_events = Event.where("event_date > ?", Date.today ).find_by(owner_id: current_user.id)
   end
 
   def new

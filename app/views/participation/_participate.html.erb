@@ -4,6 +4,8 @@
 </div>
 <% if current_user.id == @event.owner_id %>
   <%= link_to "編集する", edit_event_path(@event.id), class: "btn btn-primary btn-block" %>
+<% elsif @event.event_date < Date.today %>
+  <a href="#" class="btn btn-secondary btn-block disabled" role="button" aria-disabled="true">イベントは終了しました</a>
 <% elsif current_user.participate?(@event)%>
   <%= link_to "キャンセル", destroy_participation_path(@event), method: :delete, remote: true, class: "btn btn-secondary btn-block" %>
 <% elsif @event.recruting_count == @event.user_events.count %>

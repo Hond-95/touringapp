@@ -3,7 +3,7 @@ class UserController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @events = @user.events.page(params[:page]).per(6)
+    @events = @user.events.where("event_date > ?", Date.today ).page(params[:page]).per(6)
     @user.user_info = UserInfo.new if @user.user_info.blank?
   end
 
