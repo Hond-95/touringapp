@@ -5,18 +5,17 @@
 　バイク人口が年々減少している中で、一緒にバイクを楽しむ仲間を探すことが難しくなってきています。  
 　その現状の中で一緒に誰かとツーリングしたい人同士を繋げる事ができるアプリです。
 
-  リンク
+  リンク  
   ・https://touringapp.herokuapp.com/
 
 ## 使用技術
-
-・Ruby 2.6.3
-・Ruby on Rails 6.0.0
-・Mysql2 0.5.3
-・Puma
-・Heroku
-・Docker/Docker-compose
-・Rspec
+・Ruby 2.6.3  
+・Ruby on Rails 6.0.0  
+・Mysql2 0.5.3  
+・Puma  
+・Heroku  
+・Docker/Docker-compose  
+・Rspec  
 ・Google Maps API
 
 ## 画面一覧
