@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'home#top'
   devise_scope :user do
     get '/users/sign_out' => 'devise/sessions#destroy'
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
   resources :user, only: [:show, :edit, :update] do
