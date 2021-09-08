@@ -19,7 +19,8 @@
 ・Google Maps API
 
 ## 画面一覧
-### トップ画面
+### トップ画面  
+![トップページ](https://user-images.githubusercontent.com/66734337/132440085-43cb7347-83c8-41c4-8a10-30b59297f1e0.png)
 
 ### 新規登録画面(devise)
 
